@@ -1,0 +1,44 @@
+\section[Desenvolvimento do Projeto]{Desenvolvimento do Projeto}
+
+\subsection{Repositório do Código Fonte do Projeto}
+Um repositório público foi estabelecido no GitLab da AGES, abrangendo seis componentes distintos: oauth, infra, frontend, backend-dashboard, backend-file e uma seção dedicada à documentação no formato de Wiki. Para mais detalhes, consulte este link: https://tools.ages.pucrs.br/dashboard-para-a-pol-cia-civil.
+
+\subsection{Banco de Dados Utilizado}
+  Deverão ser apresentados os links da Wiki, com uma breve descrição.
+
+\subsection{Arquitetura Utilizada}
+  A arquitetura foi projetada para garantir escalabilidade e eficiência, aproveitando os benefícios de microserviços e containers. Toda a aplicação está dividida em cinco módulos independentes, cada um encapsulado em contêineres Docker, o que permite uma maior flexibilidade e isolamento entre os componentes. O front-end, desenvolvido em React, é executado em um container Docker e interage com uma API REST construída em Spring Boot, que por sua vez, gerencia as operações de leitura e escrita no banco de dados PostgreSQL, também contido em um Docker.\\
+A inserção de dados no banco ocorre por meio de planilhas enviadas via uma API de upload implementada com FastAPI, garantindo uma comunicação eficiente e ágil para o processamento e armazenamento de grandes volumes de dados. A arquitetura foi estruturada para evitar gargalos, possibilitando a manipulação de grandes planilhas sem comprometer a performance do sistema. A escolha de microserviços facilita a escalabilidade horizontal, permitindo replicar os serviços conforme a demanda e otimizando os recursos.\\
+A infraestrutura é orquestrada por Docker Swarm, com todas as requisições do cliente sendo inicialmente encaminhadas a um balanceador de carga que distribui o tráfego entre duas instâncias T3a.medium na AWS, cada uma executando os serviços da aplicação. Isso garante que a aplicação se mantenha altamente disponível e escalável. Além disso, uma terceira instância T3a.small é dedicada exclusivamente à execução do GitLab Runner, realizando os processos de CI/CD.\\
+Os arquivos enviados por meio da API são armazenados em um bucket S3, garantindo segurança e escalabilidade no armazenamento. Esse fluxo de dados e a interação entre os módulos são gerenciados de maneira a otimizar o desempenho do sistema, suportando uma carga de trabalho crescente sem perda de eficiência.
+
+
+\subsection{Protótipos das Telas Desenvolvidas}
+Dentro da wiki do repositório, há uma seção dedicada ao Design/Mockups, onde estão disponíveis os mockups do projeto, que foram desenvolvidos utilizando o software, Figma. Você pode acessar clicando no link a seguir: https://tools.ages.pucrs.br/dashboard-para-a-pol-cia-civil/wiki/-/wikis/design/mockups
+
+
+\subsection{Tecnologias Utilizadas}
+Para o desenvolvimento do Frontend, utilizamos as seguintes tecnologias principais:\\
+React: Biblioteca JavaScript para a construção de interfaces de usuário dinâmicas e reativas. Utilizada no desenvolvimento do front-end, permitindo criar componentes reutilizáveis e interativos.\\
+Redux: Biblioteca de gerenciamento de estado para aplicações JavaScript. Utilizada para gerenciar o estado global da aplicação, permitindo que dados sejam compartilhados de forma eficiente entre os componentes React.\\
+Axios: Biblioteca para fazer requisições HTTP do front-end para a API RESTful. Utilizada para comunicar o front-end com os serviços do back-end, garantindo a troca de dados entre os módulos de forma eficiente.\\
+HTML5/CSS3: Tecnologias fundamentais para a construção de páginas web, utilizadas para estruturar e estilizar o conteúdo no frontend.\\
+Webpack: Empacotador de módulos para aplicações JavaScript, utilizado para otimizar o processo de build e gestão de dependências do frontend.\\
+
+No Backend, utilizamos as seguintes tecnologias:\\
+Java: Uma linguagem de programação robusta e amplamente adotada para o desenvolvimento de aplicações empresariais.\\
+Framework Spring Boot: Um framework Java que simplifica a criação de aplicações web e serviços RESTful, oferecendo uma configuração mínima e produtividade elevada.\\
+Gerenciador de dependências Maven: Utilizado para gerenciar as dependências do projeto Java de forma eficiente e automatizada.\\
+Python: Uma linguagem de programação poderosa e de fácil leitura, amplamente usada para desenvolvimento rápido de software, automação e análise de dados.\\
+Framework FastAPI: Um framework moderno e de alto desempenho para a construção de APIs RESTful em Python, que permite a criação de APIs de forma rápida e com uma excelente performance.\\
+PostgreSQL: Sistema de gerenciamento de banco de dados relacional utilizado para armazenar e gerenciar os dados da aplicação, oferecendo suporte robusto a transações e consultas complexas.\\
+GitLab CI/CD: Sistema de integração contínua e entrega contínua utilizado para automatizar os processos de build, teste e deploy do código, garantindo a entrega de atualizações contínuas e de alta qualidade.\\
+	Já na parte da infraestrutura do projeto, estamos utilizando as seguintes tecnologias:\\
+Docker: Plataforma de contêineres utilizada para empacotar, distribuir e executar os serviços da aplicação de maneira isolada e eficiente. Permite garantir consistência entre os ambientes de desenvolvimento, testes e produção.
+Docker Swarm: Ferramenta de orquestração de contêineres, responsável por garantir a escalabilidade e a alta disponibilidade da aplicação, permitindo que os contêineres sejam distribuídos de forma eficiente nas instâncias.\\
+AWS (Amazon Web Services): Plataforma de serviços em nuvem que oferece recursos escaláveis e flexíveis, como instâncias EC2, balanceadores de carga e S3 para armazenamento de arquivos. Utilizada para hospedar a infraestrutura da aplicação e permitir a escalabilidade conforme a demanda.\\
+Load Balancer: Serviço de balanceamento de carga que distribui o tráfego de rede entre as instâncias da aplicação, garantindo uma distribuição equilibrada das requisições e aumentando a disponibilidade.\\
+S3 (Amazon Simple Storage Service): Serviço de armazenamento de objetos utilizado para armazenar arquivos estáticos de forma escalável, como imagens e planilhas, proporcionando alta disponibilidade e durabilidade dos dados.
+
+  
+  As tecnologias citadas deverão ter referências bibliográficas.
